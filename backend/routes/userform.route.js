@@ -37,6 +37,15 @@ formRouter.patch("/form/update/:id", async(req,res) => {
         res.send({Msg:"Form Modifying failed"})
     }
 })
+formRouter.patch("/form/delete/:id", async(req,res) => {
+    try {
+        const { id } = req.params;
+        await userformmodel.findByIdAndDelete({ _id: id });
+        res.send({Msg:"Form modifying Successfully"})
+    } catch (err) {
+        res.send({Msg:"Form Modifying failed"})
+    }
+})
 module.exports = {
     formRouter
 }
